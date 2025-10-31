@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sea</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        @font-face {
+            font-family: AvenirDemi;
+            src: url("Avenir-Next-LT-Pro-Demi.otf");
+        }
+
+        @font-face {
+            font-family: AvenirBold;
+            src: url("AvenirNextLTPro-Bold.otf");
+        }
+
+        @font-face {
+            font-family: AvenirRegular;
+            src: url("AvenirNextLTPro-Regular.otf");
+        }
+
+        :root {
+            --white-color: #ffffff;
+            --grey-color: #2b2d31;
+            --blue-color: #64a0d4;
+            --green-fancy-color: #ECF4E8;
+            --red-fancy-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--white-color);
+        }
+
+        .headertop {
+            width: 100%;
+            height: fit-content;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            display: flex;
+            align-items: center;
+            background-color: var(--white-color);
+            padding-left: 30px;
+            padding-right: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .tempatlogodantext {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tempatlogodantext img {
+            width: 27px;
+            border-radius: 10px;
+        }
+
+        .tempatlogodantext h4 {
+            font-size: 18px;
+            font-family: AvenirBold;
+            color: var(--grey-color);
+        }
+
+        .tempatuntukmenuteksdantombol {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 30px;
+            gap: 30px;
+        }
+
+        .tempatuntukteksmenu {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tempatuntukteksmenu a {
+            text-decoration: none;
+            color: var(--grey-color);
+            font-family: AvenirRegular;
+            font-size: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tempatuntukteksmenu a:hover {
+            background-color: rgba(43, 45, 49, 0.05);
+        }
+
+        .tempatuntukmenuteksdantombol button {
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            outline: none;
+            border: 2px solid var(--grey-color);
+            background-color: transparent;
+            border-radius: 50px;
+            font-family: AvenirDemi;
+            cursor: pointer;
+            color: var(--grey-color);
+            transition: border 0.3s, color 0.3s ease;
+            font-size: 13px;
+        }
+
+        .tempatuntukmenuteksdantombol button:hover {
+            border: 2px solid var(--blue-color);
+            color: var(--blue-color);
+        }
+
+        .containersatu {
+            width: 100%;
+            height: fit-content;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: var(--white-color);
+            padding-top: 0px;
+            padding-bottom: 75px;
+            position: relative;
+        }
+
+        .containersatu::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 1.5px;
+            background-color: rgba(43, 45, 49, 0.3);
+        }
+
+        .tempatteksjudulutama {
+            width: 100%;
+            height: fit-content;
+            padding: 60px;
+            background-color: var(--green-fancy-color);
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .tomboltentanggreensea {
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 40px;
+            outline: none;
+            border: 1px solid rgba(43, 45, 49, 0.1);
+            color: var(--grey-color);
+            background-color: var(--white-color);
+            font-family: AvenirRegular;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .tomboltentanggreensea svg {
+            width: 6px;
+            fill: var(--grey-color);
+        }
+
+        .h1judul {
+            font-size: 45px;
+            font-family: AvenirBold;
+            color: var(--grey-color);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .paragrafsatu {
+            font-family: AvenirRegular;
+            color: var(--grey-color);
+            font-size: 16px;
+            line-height: 1.5;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .tombolmulaimenggunakan {
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 40px;
+            color: var(--white-color);
+            outline: none;
+            border: none;
+            background-color: var(--grey-color);
+            font-family: AvenirDemi;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 50px;
+        }
+
+        .tempatuntukteksdanparagraf {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 87px;
+            gap: 60px;
+            background-color: transparent;
+        }
+
+        .h2teksjudulmini {
+            font-family: AvenirDemi;
+            font-size: 40px;
+            color: var(--grey-color);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .tempatuntukinformasigreensea {
+            width: 100%;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: flex-start;
+            padding-left: 30px;
+            padding-right: 30px;
+            gap: 50px;
+        }
+
+        .kartuinformasigreensea {
+            width: 100%;
+            height: fit-content;
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iconkartuinformasigreensea {
+            width: 80px;
+            height: 80px;
+            background-color: transparent;
+            border: 2px solid var(--grey-color);
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iconkartuinformasigreensea svg {
+            width: 21px;
+            fill: var(--grey-color);
+        }
+
+        .judulkecil {
+            color: var(--grey-color);
+            font-family: AvenirDemi;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .paragrafkartuinformasigreensea {
+            color: var(--grey-color);
+            font-family: AvenirRegular;
+            font-size: 15.5px;
+            line-height: 1.5;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .containerdua {
+            width: 100%;
+            height: fit-content;
+            padding-top: 75px;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: var(--white-color);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 65px;
+            padding-bottom: 75px;
+            position: relative;
+        }
+
+        .containerdua::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 1.5px;
+            background-color: rgba(43, 45, 49, 0.3);
+        }
+
+        .tempatteksjudulketiga {
+            width: 100%;
+            height: fit-content;
+            background-color: transparent;
+        }
+
+        .tempattentanginfo {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: transparent;
+        }
+
+        .h2teksjudulminidua {
+            text-align: left;
+            position: sticky;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .tempattombolinfofaq {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1.5px solid rgba(43, 45, 49, 0.3);
+        }
+
+        .tempattextdanarahpanah {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            position: relative;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .judulkecildua {
+            margin-top: 0px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tempatlogoarahpanah {
+            width: 33px;
+            height: 33px;
+            background-color: rgba(43, 45, 49, 0.1);
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tempatlogoarahpanah svg {
+            fill: var(--grey-color);
+            width: 7.5px;
+            transition: rotate 0.3s ease;
+        }
+
+        .paragraftekssatu {
+            width: 100%;
+            height: fit-content;
+            line-height: 1.5;
+            font-family: AvenirRegular;
+            color: var(--grey-color);
+            font-size: 16px;
+            display: block;
+        }
+
+        .tempattombolinfofaqdua {
+            padding-top: 40px;
+        }
+
+        .paragrafsatutextdua {
+            height: 0px;
+            display: none;
+        }
+
+        .svgsatuicon {
+            rotate: 90deg;
+        }
+
+        .containertiga {
+            width: 100%;
+            height: fit-content;
+            padding-left: 50px;
+            padding-right: 50px;
+            background-color: var(--white-color);
+            padding-top: 75px;
+            padding-bottom: 75px;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: flex-end;
+            gap: 50px;
+        }
+
+        .containertiga::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 1.5px;
+            background-color: rgba(43, 45, 49, 0.3);
+        }
+
+        .kartuharga {
+            width: 100%;
+            height: fit-content;
+            background-color: var(--grey-color);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 5px solid var(--red-fancy-color);
+            overflow: hidden;
+        }
+
+        .kartuhargadua {
+            border: 5px solid var(--blue-color);
+            padding: 40px;
+        }
+
+        .judulh3 {
+            font-size: 27px;
+            font-family: AvenirBold;
+            color: var(--white-color);
+        }
+
+        .tempatrekom {
+            width: 100%;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--red-fancy-color);
+        }
+
+        .tempatisitengahrekom {
+            width: 100%;
+            height: fit-content;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .judulterkecil {
+            font-family: AvenirBold;
+            color: var(--white-color);
+            font-size: 14px;
+        }
+
+        .tempatteksuang {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .rpspan {
+            font-family: AvenirRegular;
+            color: rgba(225, 225, 225, 0.5);
+            font-size: 15px;
+        }
+
+        .buuangnya {
+            font-family: AvenirBold;
+            color: var(--white-color);
+            font-size: 40px;
+            margin-left: 5px;
+            margin-bottom: -5px;
+        }
+
+        .btnmembeli {
+            width: 100%;
+            height: 35px;
+            outline: none;
+            border: none;
+            background-color: var(--white-color);
+            color: var(--grey-color);
+            font-family: AvenirDemi;
+            border-radius: 7px;
+            margin-top: 35px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .tempatinfolainnya {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 35px;
+            gap: 7px;
+        }
+
+        .ptextlist {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            color: var(--white-color);
+            font-family: AvenirDemi;
+            font-size: 14px;
+            gap: 13px;
+        }
+
+        .ptextlist svg {
+            width: 10px;
+            fill: var(--white-color);
+        }
+
+        .containerempat {
+            width: 100%;
+            height: fit-content;
+            padding-left: 50px;
+            padding-right: 50px;
+            background-color: var(--white-color);
+            padding-top: 75px;
+            padding-bottom: 75px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .containerempat::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 1.5px;
+            background-color: rgba(43, 45, 49, 0.3);
+        }
+
+        .containerlima {
+            width: 100%;
+            height: fit-content;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: var(--white-color);
+            padding-top: 75px;
+            padding-bottom: 75px;
+            position: relative;
+        }
+
+        .tempatteksjudulakhir {
+            width: 100%;
+            height: fit-content;
+            padding: 60px;
+            background-color: var(--green-fancy-color);
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .h1judulakhir {
+            text-align: center;
+        }
+
+        .imageakhir {
+            width: 50px;
+            border-radius: 10px;
+        }
+
+        .footerakhir {
+            width: 100%;
+            height: fit-content;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: var(--white-color);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .tempatgitdanlisensi {
+            position: absolute;
+            right: 30px;
+        }
+
+        .tempatgitdanlisensidua {
+            position: absolute;
+            right: 30px;
+        }
+
+        .tempatgitdanlisensi p {
+            color: var(--grey-color);
+            font-family: AvenirDemi;
+            font-size: 12px;
+            display: block;
+        }
+
+        .tempatgitdanlisensidua p {
+            color: var(--grey-color);
+            font-family: AvenirDemi;
+            font-size: 12px;
+            display: none;
+        }
+
+        .tempatmenumobile {
+            width: fit-content;
+            height: fit-content;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 30px;
+        }
+
+        .tempatmenumobile svg {
+            fill: var(--grey-color);
+            width: 13px;
+            cursor: pointer;
+        }
+
+        .tempattombolmenumobile {
+            width: 100%;
+            height: fit-content;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 30px;
+            padding-top: 0px;
+            background-color: var(--white-color);
+            position: fixed;
+            top: -100%;
+            left: 0;
+            z-index: 999;
+            border-radius: 0px 0px 17px 17px;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            transition: top 0.5s ease;
+        }
+
+        .btnmobile {
+            width: 100%;
+            height: 45px;
+            outline: none;
+            border: none;
+            background-color: var(--grey-color);
+            color: var(--white-color);
+            font-family: AvenirDemi;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14.5px;
+        }
+
+        @media (max-width: 768px) {
+            .tempatuntukmenuteksdantombol {
+                display: none;
+            }
+
+            .tempatmenumobile {
+                display: flex;
+            }
+
+            .tempatuntukinformasigreensea {
+                grid-template-columns: repeat(1, 1fr);
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            .containerdua {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .containertiga {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .h1judul {
+                font-size: 33px;
+            }
+
+            .tempatteksjudulutama {
+                padding: 40px;
+            }
+
+            .tempatteksjudulakhir {
+                padding: 40px;
+                border-radius: 0px;
+            }
+
+            .h2teksjudulmini {
+                font-size: 30px;
+            }
+
+            .kartuinformasigreensea {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .judulkecildua {
+                text-align: left;
+                padding-right: 50px;
+            }
+
+            .containertiga {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .containerlima {
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-bottom: 0px;
+            }
+            
+            .tempatgitdanlisensi p {
+                display: none;
+            }
+
+            .tempatgitdanlisensidua p {
+                display: block;
+            }
+
+            .tempattombolmenumobile {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="headertop" class="headertop">
+        <div class="tempatlogodantext">
+            <img src="logo.png" alt="logo">
+            <h4>Green Sea</h4>
+        </div>
+
+        <div class="tempatmenumobile">
+            <svg id="btnmenumobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+        </div>
+
+        <div class="tempatuntukmenuteksdantombol">
+            <div class="tempatuntukteksmenu">
+                <a href="#rumah">Rumah</a>
+                <a href="#bantuan">Bantuan</a>
+                <a href="#harga">Harga</a>
+                <a onclick="window.location.href='https://api.whatsapp.com/send/?phone=+6282229488272&text=Halo%2C+saya+dari+pelanggan+ingin+melaporkan+sesuatu.&type=phone_number&app_absent=0'">Laporan</a>
+                <a onclick="window.location.href='https://api.whatsapp.com/send/?phone=+6282331656027&text=Halo%2C+saya+ingin+memberi+dukungan+kepada+Green+Sea.&type=phone_number&app_absent=0'">Dukungan</a>
+            </div>
+
+            <button onclick="window.location.href='https://wa.me/6282331656027'">Kontak</button>
+        </div>
+    </header>
+
+    <div id="tempattombolmenumobile" class="tempattombolmenumobile">
+        <button onclick="location.href='#rumah'" class="btnmobile">Rumah</button>
+        <button onclick="location.href='#bantuan'" class="btnmobile">Bantuan</button>
+        <button onclick="location.href='#harga'" class="btnmobile">Harga</button>
+        <button onclick="window.location.href='https://api.whatsapp.com/send/?phone=+6282229488272&text=Halo%2C+saya+dari+pelanggan+ingin+melaporkan+sesuatu.&type=phone_number&app_absent=0'" class="btnmobile">Laporan</button>
+        <button onclick="window.location.href='https://api.whatsapp.com/send/?phone=+6282331656027&text=Halo%2C+saya+ingin+memberi+dukungan+kepada+Green+Sea.&type=phone_number&app_absent=0'" class="btnmobile">Dukungan</button>
+        <button onclick="window.location.href='https://wa.me/6282331656027'" class="btnmobile">Kontak</button>
+    </div>
+
+    <div id="containersatu" class="containersatu">
+        <div class="tempatteksjudulutama">
+            <button onclick="window.location.href='https://github.com/NusanHuh/Green-Sea'" class="tomboltentanggreensea">Github Green Sea<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></button>
+
+            <h1 class="h1judul">Green Sea, penyedia jasa pembuatan <em>website</em>. Proses sangat mudah dan cepat.</h1>
+            <p class="paragrafsatu">Green Sea pembuatan jasa website, suatu website yang bisa membantu mengatasi maasalah pembuatan website dengan cepat, aman dan terjangkau.</p>
+
+            <button onclick="location.href='#harga'" class="tombolmulaimenggunakan">Mulai gunakan</button>
+        </div>
+
+        <div class="tempatuntukteksdanparagraf">
+            <h2 class="h2teksjudulmini">Gunakan jasa <em>Green Sea</em> dan wujudkan menjadi kenyataan</h2>
+
+            <div class="tempatuntukinformasigreensea">
+                <div class="kartuinformasigreensea">
+                    <div class="iconkartuinformasigreensea">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224 416 224c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288 32 288c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3z"/></svg>
+                    </div>
+
+                    <h4 class="judulkecil">Proses pembuatan cepat</h4>
+
+                    <p class="paragrafkartuinformasigreensea">Green Sea akan berusaha agar proses pembuatan website berjalan dengan cepat dan tidak berjalan dengan lama, agar website pelanggan bisa langsung publik dan bisa di lihat.</p>
+                </div>
+                <div class="kartuinformasigreensea">
+                    <div class="iconkartuinformasigreensea">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M307.8 18.4c-12 5-19.8 16.6-19.8 29.6l0 80-112 0c-97.2 0-176 78.8-176 176 0 113.3 81.5 163.9 100.2 174.1 2.5 1.4 5.3 1.9 8.1 1.9 10.9 0 19.7-8.9 19.7-19.7 0-7.5-4.3-14.4-9.8-19.5-9.4-8.8-22.2-26.4-22.2-56.7 0-53 43-96 96-96l96 0 0 80c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-9.2-9.2-22.9-11.9-34.9-6.9z"/></svg>
+                    </div>
+
+                    <h4 class="judulkecil">Proses pengiriman mudah</h4>
+
+                    <p class="paragrafkartuinformasigreensea">Kami akan mengirim lewat Whatsapp atau Google Drive sesuai permintaan pelanggan. Green Sea akan usahakan yang terbaik untuk anda dan mudah bagi anda.</p>
+                </div>
+                <div class="kartuinformasigreensea">
+                    <div class="iconkartuinformasigreensea">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512a256 256 0 1 1 0-512 256 256 0 1 1 0 512zM374 145.7c-10.7-7.8-25.7-5.4-33.5 5.3L221.1 315.2 169 263.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.8 7.5 18.8 7s13.4-4.1 17.5-9.8L379.3 179.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></svg>
+                    </div>
+
+                    <h4 class="judulkecil">Hasil sangat cocok</h4>
+
+                    <p class="paragrafkartuinformasigreensea">Green Sea akan mengusahakan hasil dari pekerjaan kami sesuai dengan permintaan anda, dan jika ada kekurangan atau kesalahan anda bisa melaporkan ke layanan Green Sea.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="containerdua" class="containerdua">
+        <div class="tempatteksjudulketiga">
+            <h2 id="h2teksjudulminidua" class="h2teksjudulmini h2teksjudulminidua">
+                Mungkin dengan beberapa pertanyaan umum yang dapat membantu anda
+            </h2>
+        </div>
+
+        <div class="tempattentanginfo">
+            <div class="tempattombolinfofaq">
+                <button id="buttoninfosatu" class="tempattextdanarahpanah">
+                    <h4 class="judulkecil judulkecildua">
+                        Apakah jasa Green Sea aman?
+
+                        <div class="tempatlogoarahpanah">
+                            <svg id="svgiconrightsatu" class="svgsatuicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                        </div>
+                    </h4>
+                </button>
+
+                <p id="paragrafopensatu" class="paragraftekssatu">Ya, jasa pembuatan website yang di berikan oleh Green Sea aman untuk pelanggan. Karena Green Sea selalu memberikan yang terbaik bagi anda yang ingin membuat website.</p>
+            </div>
+
+            <div class="tempattombolinfofaq tempattombolinfofaqdua">
+                <button id="buttoninfodua" class="tempattextdanarahpanah">
+                    <h4 class="judulkecil judulkecildua">
+                        Apakah pekerja sudah berpengalaman?
+
+                        <div class="tempatlogoarahpanah">
+                            <svg id="svgiconrightdua" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                        </div>
+                    </h4>
+                </button>
+
+                <p id="paragrafopendua" class="paragraftekssatu paragrafsatutextdua">Ya, pekerja Green Sea berpengalaman dalam pekerjaan nya yaitu pembuatan website. Pekerja sebelum bekerja akan di tes yaitu tentang pengetahuan website dan melaksanakan tes.</p>
+            </div>
+
+            <div class="tempattombolinfofaq tempattombolinfofaqdua">
+                <button id="buttoninfotiga" class="tempattextdanarahpanah">
+                    <h4 class="judulkecil judulkecildua">
+                        Berapa biaya untuk jasa pembuatan?
+
+                        <div class="tempatlogoarahpanah">
+                            <svg id="svgiconrighttiga" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                        </div>
+                    </h4>
+                </button>
+
+                <p id="paragrafopentiga" class="paragraftekssatu paragrafsatutextdua">Green Sea memberikan harga yang cukup murah bagi anda, tidak semua harga murah buruk. Green Sea akan usahakan tampilan website selalu pas dan cocok walaupun harga cukup murah.</p>
+            </div>
+
+            <div class="tempattombolinfofaq tempattombolinfofaqdua">
+                <button id="buttoninfoempat" class="tempattextdanarahpanah">
+                    <h4 class="judulkecil judulkecildua">
+                        Bagaimana cara memesan jasa?
+
+                        <div class="tempatlogoarahpanah">
+                            <svg id="svgiconrightempat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                        </div>
+                    </h4>
+                </button>
+
+                <p id="paragrafopenempat" class="paragraftekssatu paragrafsatutextdua">Anda pergi ke lokasi harga lalu pilih paket dan melakukan checkout, setelah itu anda akan diarahkan ke halaman whatsapp direct message. Kirim pesanan dan tunggu respon tim Green Sea.</p>
+            </div>
+
+            <div class="tempattombolinfofaq tempattombolinfofaqdua">
+                <button id="buttoninfolima" class="tempattextdanarahpanah">
+                    <h4 class="judulkecil judulkecildua">
+                        Bagaimana jika di website ada kendala?
+
+                        <div class="tempatlogoarahpanah">
+                            <svg id="svgiconrightlima" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                        </div>
+                    </h4>
+                </button>
+
+                <p id="paragrafopenlima" class="paragraftekssatu paragrafsatutextdua">Anda pergi ke halaman laporan dan akan dialihkan ke halaman whatsapp direct message lalu kirimkan kesalahan apa yang ada pada website anda beserta ID pelanggan, jika ID pelanggan hilang atau terhapus maka proses tidak akan berjalan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="containertiga" class="containertiga">
+        <div class="kartuharga kartuhargadua">
+            <h3 class="judulh3">Bronze</h3>
+
+            <p class="tempatteksuang">
+                <span class="rpspan">Rp</span>
+                <b class="buuangnya">50.000</b>
+            </p>
+
+            <button id="buttonbelibronze" class="btnmembeli">Membeli</button>
+
+            <div class="tempatinfolainnya">
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    7 Halaman
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    3x revisi
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Garansi 1 Bulan
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    1 Logo bisnis
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    1 favico
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Hosting publik
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Google index
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Tanpa email bisnis
+                </p>
+            </div>
+        </div>
+
+        <div class="kartuharga">
+            <div class="tempatrekom">
+                <h5 class="judulterkecil">POPULER</h5>
+            </div>
+            <div class="tempatisitengahrekom">
+                <h3 class="judulh3">Silver</h3>
+
+                <p class="tempatteksuang">
+                    <span class="rpspan">Rp</span>
+                    <b class="buuangnya">87.000</b>
+                </p>
+
+                <button id="buttonbelisilver" class="btnmembeli">Membeli</button>
+
+                <div class="tempatinfolainnya">
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        17 Halaman
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        5x revisi
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        Garansi 5 Bulan
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        3 Logo bisnis
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        3 favico
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        Hosting publik
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        Google index
+                    </p>
+
+                    <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                        1 Email bisnis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="kartuharga kartuhargadua">
+            <h3 class="judulh3">Gold</h3>
+
+            <p class="tempatteksuang">
+                <span class="rpspan">Rp</span>
+                <b class="buuangnya">153.000</b>
+            </p>
+
+            <button id="buttonbeligold" class="btnmembeli">Membeli</button>
+
+            <div class="tempatinfolainnya">
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    25 Halaman
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    10x revisi
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Garansi 1 tahun
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    5 Logo bisnis
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    5 favico
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Hosting publik
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    Google index
+                </p>
+
+                <p class="ptextlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"/></svg>
+                    3 Email bisnis
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="containerempat">
+        <h2 class="h2teksjudulmini">Dengan experimen dan mencoba maka akan terwujudkan hasilnya</h2>
+    </div>
+
+    <div class="containerlima">
+        <div class="tempatteksjudulakhir">
+            <img class="imageakhir" src="logoakhir.png" alt="logo">
+
+            <h1 class="h1judul h1judulakhir">Mengubah pemikiran menjadi kenyataan dengan <em>Green Sea</em></h1>
+        </div>
+    </div>
+
+    <footer class="footerakhir">
+        <div class="tempatlogodantext">
+            <img src="logo.png" alt="logo">
+            <h4>Green Sea</h4>
+        </div>
+
+        <div class="tempatgitdanlisensi">
+            <p>CopyRight © <span id="tahun"></span> Green Sea</p>
+        </div>
+
+        <div class="tempatgitdanlisensidua">
+            <p>© <span id="tahundua"></span> Green Sea</p>
+        </div>
+    </footer>
+
+    <script>
+        new ResizeObserver(()=>containersatu.style.paddingTop=`${headertop.offsetHeight+10}px`).observe(headertop),containersatu.style.paddingTop=`${headertop.offsetHeight+10}px`;
+        new ResizeObserver(()=>tempattombolmenumobile.style.paddingTop=`${headertop.offsetHeight+30}px`).observe(headertop),tempattombolmenumobile.style.paddingTop=`${headertop.offsetHeight+30}px`;
+        new ResizeObserver(()=>h2teksjudulminidua.style.top=`${headertop.offsetHeight+10}px`).observe(headertop),h2teksjudulminidua.style.top=`${headertop.offsetHeight+10}px`;
+
+        const tahunSekarang = new Date().getFullYear();
+        document.getElementById("tahun").textContent = tahunSekarang;
+
+        const tahunSekarangdua = new Date().getFullYear();
+        document.getElementById("tahundua").textContent = tahunSekarangdua;
+
+        const btnmenumobile = document.getElementById("btnmenumobile");
+        btnmenumobile.addEventListener("click", function() {
+            const tempattombolmenumobile = document.getElementById("tempattombolmenumobile");
+            const ambildatatop = getComputedStyle(tempattombolmenumobile).top;
+            
+            if (ambildatatop.startsWith("-")) {
+                tempattombolmenumobile.style.top = "0";
+            } else {
+                tempattombolmenumobile.style.top = "-100%";
+            }
+        });
+
+        function scrollToHash() {
+            const hash = window.location.hash;
+            if (hash === '#rumah') {
+                const target = document.getElementById('containersatu');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (hash === '#bantuan') {
+                const target = document.getElementById('containerdua');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (hash === '#harga') {
+                const target = document.getElementById('containertiga');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        function randomString(length) {
+            var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+
+            if (! length) {
+                length = Math.floor(Math.random() * chars.length);
+            }
+
+            var str = '';
+            for (var i = 0; i < length; i++) {
+                str += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return str;
+        }
+
+        var div = randomString(8);
+
+        document.getElementById("buttonbelibronze").addEventListener("click", function() {
+            window.location.href = `https://api.whatsapp.com/send/?phone=+6282331656027&text=Halo,+saya+dengan+ID+pelanggan+${div}+ingin+memesan+jasa+pembuatan+website+paket+Bronze.%0A%0AJelaskan+website+anda:%0A%0A&type=phone_number&app_absent=0`
+        });
+        document.getElementById("buttonbelisilver").addEventListener("click", function() {
+            window.location.href = `https://api.whatsapp.com/send/?phone=+6282331656027&text=Halo,+saya+dengan+ID+pelanggan+${div}+ingin+memesan+jasa+pembuatan+website+paket+Silver.%0A%0AJelaskan+website+anda:%0A%0A&type=phone_number&app_absent=0`
+        });
+        document.getElementById("buttonbeligold").addEventListener("click", function() {
+            window.location.href = `https://api.whatsapp.com/send/?phone=+6282331656027&text=Halo,+saya+dengan+ID+pelanggan+${div}+ingin+memesan+jasa+pembuatan+website+paket+Gold.%0A%0AJelaskan+website+anda:%0A%0A&type=phone_number&app_absent=0`
+        });
+
+        window.addEventListener("scroll", () => {
+            const header = document.getElementById("headertop");
+
+            if (window.scrollY > 0) {
+                header.style.boxShadow = "0px 1px 5px rgba(43, 45, 49, 0.1)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', scrollToHash);
+        window.addEventListener('hashchange', scrollToHash);
+
+        const buttoninfosatu = document.getElementById("buttoninfosatu");
+        const buttoninfodua = document.getElementById("buttoninfodua");
+        const buttoninfotiga = document.getElementById("buttoninfotiga");
+        const buttoninfoempat = document.getElementById("buttoninfoempat");
+        const buttoninfolima = document.getElementById("buttoninfolima");
+
+        buttoninfosatu.addEventListener("click", function() {
+            document.getElementById("svgiconrightsatu").style.rotate = "90deg";
+            document.getElementById("svgiconrightdua").style.rotate = "0deg";
+            document.getElementById("svgiconrighttiga").style.rotate = "0deg";
+            document.getElementById("svgiconrightempat").style.rotate = "0deg";
+            document.getElementById("svgiconrightlima").style.rotate = "0deg";
+
+            document.getElementById("paragrafopensatu").style.display = "block";
+            document.getElementById("paragrafopendua").style.display = "none";
+            document.getElementById("paragrafopentiga").style.display = "none";
+            document.getElementById("paragrafopenempat").style.display = "none";
+            document.getElementById("paragrafopenlima").style.display = "none";
+
+            document.getElementById("paragrafopensatu").style.height = "auto";
+            document.getElementById("paragrafopendua").style.height = "0px";
+            document.getElementById("paragrafopentiga").style.height = "0px";
+            document.getElementById("paragrafopenempat").style.height = "0px";
+            document.getElementById("paragrafopenlima").style.height = "0px";
+        });
+
+        buttoninfodua.addEventListener("click", function() {
+            document.getElementById("svgiconrightsatu").style.rotate = "0deg";
+            document.getElementById("svgiconrightdua").style.rotate = "90deg";
+            document.getElementById("svgiconrighttiga").style.rotate = "0deg";
+            document.getElementById("svgiconrightempat").style.rotate = "0deg";
+            document.getElementById("svgiconrightlima").style.rotate = "0deg";
+
+            document.getElementById("paragrafopensatu").style.display = "none";
+            document.getElementById("paragrafopendua").style.display = "block";
+            document.getElementById("paragrafopentiga").style.display = "none";
+            document.getElementById("paragrafopenempat").style.display = "none";
+            document.getElementById("paragrafopenlima").style.display = "none";
+
+            document.getElementById("paragrafopensatu").style.height = "0px";
+            document.getElementById("paragrafopendua").style.height = "auto";
+            document.getElementById("paragrafopentiga").style.height = "0px";
+            document.getElementById("paragrafopenempat").style.height = "0px";
+            document.getElementById("paragrafopenlima").style.height = "0px";
+        });
+
+        buttoninfotiga.addEventListener("click", function() {
+            document.getElementById("svgiconrightsatu").style.rotate = "0deg";
+            document.getElementById("svgiconrightdua").style.rotate = "0deg";
+            document.getElementById("svgiconrighttiga").style.rotate = "90deg";
+            document.getElementById("svgiconrightempat").style.rotate = "0deg";
+            document.getElementById("svgiconrightlima").style.rotate = "0deg";
+
+            document.getElementById("paragrafopensatu").style.display = "none";
+            document.getElementById("paragrafopendua").style.display = "none";
+            document.getElementById("paragrafopentiga").style.display = "block";
+            document.getElementById("paragrafopenempat").style.display = "none";
+            document.getElementById("paragrafopenlima").style.display = "none";
+
+            document.getElementById("paragrafopensatu").style.height = "0px";
+            document.getElementById("paragrafopendua").style.height = "0px";
+            document.getElementById("paragrafopentiga").style.height = "auto";
+            document.getElementById("paragrafopenempat").style.height = "0px";
+            document.getElementById("paragrafopenlima").style.height = "0px";
+        });
+
+        buttoninfoempat.addEventListener("click", function() {
+            document.getElementById("svgiconrightsatu").style.rotate = "0deg";
+            document.getElementById("svgiconrightdua").style.rotate = "0deg";
+            document.getElementById("svgiconrighttiga").style.rotate = "0deg";
+            document.getElementById("svgiconrightempat").style.rotate = "90deg";
+            document.getElementById("svgiconrightlima").style.rotate = "0deg";
+
+            document.getElementById("paragrafopensatu").style.display = "none";
+            document.getElementById("paragrafopendua").style.display = "none";
+            document.getElementById("paragrafopentiga").style.display = "none";
+            document.getElementById("paragrafopenempat").style.display = "block";
+            document.getElementById("paragrafopenlima").style.display = "none";
+
+            document.getElementById("paragrafopensatu").style.height = "0px";
+            document.getElementById("paragrafopendua").style.height = "0px";
+            document.getElementById("paragrafopentiga").style.height = "0px";
+            document.getElementById("paragrafopenempat").style.height = "auto";
+            document.getElementById("paragrafopenlima").style.height = "0px";
+        });
+
+        buttoninfolima.addEventListener("click", function() {
+            document.getElementById("svgiconrightsatu").style.rotate = "0deg";
+            document.getElementById("svgiconrightdua").style.rotate = "0deg";
+            document.getElementById("svgiconrighttiga").style.rotate = "0deg";
+            document.getElementById("svgiconrightempat").style.rotate = "0deg";
+            document.getElementById("svgiconrightlima").style.rotate = "90deg";
+
+            document.getElementById("paragrafopensatu").style.display = "none";
+            document.getElementById("paragrafopendua").style.display = "none";
+            document.getElementById("paragrafopentiga").style.display = "none";
+            document.getElementById("paragrafopenempat").style.display = "none";
+            document.getElementById("paragrafopenlima").style.display = "block";
+
+            document.getElementById("paragrafopensatu").style.height = "0px";
+            document.getElementById("paragrafopendua").style.height = "0px";
+            document.getElementById("paragrafopentiga").style.height = "0px";
+            document.getElementById("paragrafopenempat").style.height = "0px";
+            document.getElementById("paragrafopenlima").style.height = "auto";
+        });
+    </script>
+</body>
+</html>
